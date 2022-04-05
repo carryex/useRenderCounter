@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Card } from './components/Card.component';
+import { RenderCount } from './components/RenderCount.components';
+import { Button } from './stories/Button';
 
-function App() {
+const App = () => {
+  const [buttonClick, setButtonClick] = React.useState(0);
+  const onButtonClick = () => setButtonClick(buttonClick + 1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Card
+        title={'Test Project with useRerender hook'}
+        bodyText={`buttons clicked: ${buttonClick}`}
+      >
+        <Button label='click me' onClick={onButtonClick} />
+        <RenderCount show={true} label='Card' />
+      </Card>
     </div>
   );
-}
+};
 
 export default App;
